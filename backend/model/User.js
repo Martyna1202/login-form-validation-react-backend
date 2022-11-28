@@ -15,23 +15,25 @@ const addressSchema = new Schema(
   { _id: false }
 );
 
-const UserSchema = new Schema({
-  name: { type: String },
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true },
-  confirmPassword: { type: String, required: true },
-  address: addressSchema,
-  birthday: { type: Date },
-  favoriteMusic: {
-    type: String,
-    enum: ["Rock", "Pop", "Dance", "R'n'B", "Reggae", "Classic"],
-  },
-  accountCreatedAt: { type: Date },
-  comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
-  cart: [{ type: mongoose.Schema.Types.ObjectId, ref: "Cart" }],
+const UserSchema = new Schema(
+  {
+    name: { type: String },
+    email: { type: String, required: true, unique: true },
+    password: { type: String, required: true },
+    address: addressSchema,
+    birthday: { type: Date },
+    favoriteMusic: {
+      type: String,
+      enum: ["Rock", "Pop", "Dance", "R'n'B", "Reggae", "Classic"],
+    },
 
-  tokens: [{ type: String }],
-});
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "Comment" }],
+    cart: [{ type: mongoose.Schema.Types.ObjectId, ref: "Cart" }],
+
+    tokens: [{ type: String }],
+  },
+  { timestamps: true }
+);
 
 //  INSTANCE METHODS
 //****************** */

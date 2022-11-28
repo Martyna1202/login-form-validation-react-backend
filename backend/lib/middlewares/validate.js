@@ -3,7 +3,6 @@ import httpErrors from "http-errors";
 
 export default function validate(req, res, next) {
   const errors = validationResult(req);
-
   if (errors.isEmpty()) return next();
 
   const shortErrors = errors.array().map((err) => {
@@ -12,5 +11,8 @@ export default function validate(req, res, next) {
     };
   });
 
-  return httpErrors.BadRequest(shortErrors);
+  //  HERE: NEXT()
+  //  return next({ message: shortErrors, status: 418 });
+  //  OR: THROW NOT RETURN!!!:
+  throw httpErrors.BadRequest(shortErrors);
 }

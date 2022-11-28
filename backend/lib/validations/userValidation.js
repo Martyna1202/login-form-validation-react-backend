@@ -1,6 +1,7 @@
 import { body } from "express-validator";
 import validate from "../middlewares/validate.js";
 import User from "../../model/User.js";
+import "express-async-errors";
 
 export const register = [
   body("name").isString().optional().withMessage("Please fill in your name"),
@@ -14,9 +15,8 @@ export const register = [
     .isStrongPassword()
     .withMessage("please choose strong Password"),
   body("confirmPassword").custom((value, { req }) => {
-    if (value !== req.body.password) {
+    if (value !== req.body.password)
       throw new Error("Password confirmation does not match password");
-    }
     return true;
   }),
   //   body("address").isString().optional(),

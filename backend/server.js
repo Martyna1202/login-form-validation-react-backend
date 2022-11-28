@@ -9,22 +9,6 @@ import "express-async-errors";
 //  IMPORT ROUTES FROM FILES
 import usersRouter from "./routers/usersRouter.js";
 
-const app = express();
-app.use(express.json());
-app.use(cookieParser());
-
-//  COMMUNICATION BETWEEN BROWSER & SERVER,
-//  ONLY IF THIS SELECTED URL OF BROWSER IS ON WHITE-LIST,
-//  BROWSER IS ABLE TO READ RESPONSE
-app.use(
-  cors({
-    origin: "http://localhost:3000",
-    credentials: true,
-  })
-);
-
-app.use("/user", usersRouter);
-
 //  DATA FROM ENV-FILE
 const { DB_USER, DB_PASS, DB_HOST, DB_NAME, PORT } = process.env;
 
@@ -39,6 +23,23 @@ mongoose
   })
   .then(() => console.log("Database connected"))
   .catch(() => console.log("Database is NOT connected!"));
+
+const app = express();
+//  MIDDLEWARE
+app.use(express.json());
+app.use(cookieParser());
+
+//  COMMUNICATION BETWEEN BROWSER & SERVER,
+//  ONLY IF THIS SELECTED URL OF BROWSER IS ON WHITE-LIST,
+//  BROWSER IS ABLE TO READ RESPONSE
+app.use(
+  cors({
+    origin: "http://localhost:3000",
+    credentials: true,
+  })
+);
+
+app.use("/user", usersRouter);
 
 //  ERROR HANDLING
 app.use((req, res, next) => {
