@@ -12,7 +12,7 @@ app.get("/", controller.showUsers);
 app.get("/user", auth, controller.getOneUser);
 app.post("/register", ...userValidations.register, controller.createUser);
 app.post("/login", ...userValidations.login, controller.login);
-app.post("/isLoggedIn", auth, controller.isLoggedIn);
-app.post("/logout", auth, controller.logout);
+app.get("/isLoggedIn", auth, controller.isLoggedIn);
+app.get("/logout", auth, controller.logout);
 
 export default app;

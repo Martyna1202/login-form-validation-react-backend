@@ -14,12 +14,6 @@ export const register = [
   body("password")
     .isStrongPassword()
     .withMessage("please choose strong Password"),
-  body("confirmPassword").custom((value, { req }) => {
-    if (value !== req.body.password)
-      throw new Error("Password confirmation does not match password");
-    return true;
-  }),
-  //   body("address").isString().optional(),
   validate,
 ];
 
@@ -29,3 +23,11 @@ export const login = [
   body("password").isString(),
   validate,
 ];
+
+// FOR CONFIRM PASSWORD OR ADDRESS
+// body("confirmPassword").custom((value, { req }) => {
+//   if (value !== req.body.password)
+//     throw new Error("Password confirmation does not match password");
+//   return true;
+// }),
+//   body("address").isString().optional(),

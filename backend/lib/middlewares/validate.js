@@ -13,6 +13,6 @@ export default function validate(req, res, next) {
 
   //  HERE: NEXT()
   //  return next({ message: shortErrors, status: 418 });
-  //  OR: THROW NOT RETURN!!!:
+  //  OR: THROW, BUT NOT RETURN!!!
   throw httpErrors.BadRequest(shortErrors);
 }

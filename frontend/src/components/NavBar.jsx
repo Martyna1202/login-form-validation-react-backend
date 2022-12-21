@@ -13,6 +13,10 @@ function NavBar() {
           <li>
             <Link to="/register">Register</Link>
           </li>
+          {/* Wenn eingeloggt: gehe zu Account */}
+          {/* <li>
+            <Link to="/register">Register</Link>
+          </li> */}
         </ul>
       </nav>
     </>

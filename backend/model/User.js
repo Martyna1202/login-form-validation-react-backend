@@ -20,8 +20,8 @@ const UserSchema = new Schema(
     name: { type: String },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
-    address: addressSchema,
     birthday: { type: Date },
+    address: addressSchema,
     favoriteMusic: {
       type: String,
       enum: ["Rock", "Pop", "Dance", "R'n'B", "Reggae", "Classic"],

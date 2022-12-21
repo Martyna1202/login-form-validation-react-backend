@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { UserContext } from "../useContext/userContext";
+import { UserContext } from "../hooks/userContext";
 
 function Login() {
   const { handleChange, handleSubmit, userData, setUserData } =
@@ -39,14 +39,6 @@ function Login() {
         />
         <input
           type="text"
-          name="confirmPassword"
-          id="confirmPassword"
-          placeholder="confirm password"
-          value={userData.confirmPassword}
-          onChange={handleChange}
-        />
-        <input
-          type="text"
           name="address"
           id="address"
           placeholder="Your address"
@@ -62,6 +54,7 @@ function Login() {
           value={userData.favMusic}
           onChange={handleChange}
         />
+        <input type="submit"></input>
       </form>
     </div>
   );
